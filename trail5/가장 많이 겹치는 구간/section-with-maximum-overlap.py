@@ -1,17 +1,16 @@
 n = int(input())
 intervals = [tuple(map(int, input().split())) for _ in range(n)]
+MAX_R = 200000
+arr = [0] * (MAX_R + 1)
 
-point = []
 for x, y in intervals:
-    point.append((x, 1))
-    point.append((y, -1))
-
-point.sort()
+    arr[x] = 1
+    arr[y] = -1
 
 answer = 0
 res = 0
-for x, v in point:
-    res += v
+for x in range(1, MAX_R + 1):
+    res += arr[x]
     answer = max(answer, res)
     
 print(answer)
